@@ -1,3 +1,5 @@
+// import * as events from '../events/events';
+
 let storage = {
   // используется для удаления события
   eventIdToDelete: null,
@@ -12,7 +14,7 @@ export const setItem = (key, value) => {
   // ф-ция должна устанавливать значения в объект storage
 };
 
-export const getItem = (key) => {
+export const getItem = key => {
   // ф-ция должна возвращать по ключу значения из объекта storage
 };
 
