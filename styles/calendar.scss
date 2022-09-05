@@ -1,14 +1,19 @@
 // стили сетки календаря и заголовка календаря с днями недели
 .calendar {
+  overflow: auto;
 
   &__header {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
+    position: absolute;
+    background-color: white;
+    z-index: 1;
   }
 
   &__day-label {
     height: 100px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;

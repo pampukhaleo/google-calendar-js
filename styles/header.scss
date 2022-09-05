@@ -1,10 +1,9 @@
 .header {
   height: 50px;
-  width: 425px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  margin: 7px
+  margin: 7px;
+  position: relative;
 }
 
 .button {
@@ -14,6 +13,7 @@
   align-items: center;
   justify-content: space-evenly;
   font-weight: bold;
+  margin-left: 20px;
 
   &:hover {
     background-color: #cccccc;

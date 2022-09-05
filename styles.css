@@ -66,13 +66,20 @@
   margin-right: 5px;
 }
 
+.calendar {
+  overflow: auto;
+}
 .calendar__header {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
+  position: absolute;
+  background-color: white;
+  z-index: 1;
 }
 .calendar__day-label {
   height: 100px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -80,13 +87,23 @@
   text-transform: uppercase;
 }
 
+.calendar__body {
+  margin-top: 100px;
+}
+.calendar__time-scale {
+  width: 45px;
+}
+
+.time-slot {
+  height: 60px;
+}
+
 .header {
   height: 50px;
-  width: 425px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
   margin: 7px;
+  position: relative;
 }
 
 .button {
@@ -96,6 +113,7 @@
   align-items: center;
   justify-content: space-evenly;
   font-weight: bold;
+  margin-left: 20px;
 }
 .button:hover {
   background-color: #cccccc;

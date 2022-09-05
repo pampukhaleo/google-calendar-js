@@ -16,28 +16,22 @@ function renderCurrentMonth() {
 const onChangeWeek = event => {
   // при переключении недели обновите displayedWeekStart в storage
   // и перерисуйте все необходимые элементы страницы (renderHeader, renderWeek, renderCurrentMonth)
-  console.dir(event.target.dataset.direction);
   const monday = getItem('displayedWeekStart');
-  console.log(monday);
   switch (event.target.dataset.direction) {
     case 'next':
       setItem('displayedWeekStart', shmoment(monday).add('days', 7).result());
-      renderHeader();
-      renderCurrentMonth();
       break;
     case 'prev':
       setItem('displayedWeekStart', shmoment(monday).subtract('days', 7).result());
-      renderHeader();
-      renderCurrentMonth();
       break;
     case 'today':
       setItem('displayedWeekStart', getStartOfWeek(new Date()));
-      renderHeader();
-      renderCurrentMonth();
       break;
     default:
       break;
   }
+  renderHeader();
+  renderCurrentMonth();
 };
 
 export const initNavigation = () => {
