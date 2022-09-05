@@ -1,1 +1,9 @@
 // стили навигации
+.navigation {
+  display: flex;
+  align-items: center;
+
+  &__today-btn {
+    margin-right: 5px;
+  }
+}

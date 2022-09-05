@@ -1,6 +1,6 @@
 // import * as events from '../events/events';
 
-let storage = {
+const storage = {
   // используется для удаления события
   eventIdToDelete: null,
   // хранит дату понедельника той отображаемой недели
@@ -12,10 +12,12 @@ let storage = {
 
 export const setItem = (key, value) => {
   // ф-ция должна устанавливать значения в объект storage
+  Object.assign(storage, { [key]: value });
 };
 
 export const getItem = key => {
   // ф-ция должна возвращать по ключу значения из объекта storage
+  return storage[key];
 };
 
 // пример объекта события

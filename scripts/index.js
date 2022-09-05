@@ -5,7 +5,6 @@ import { initNavigation } from './header/navigation.js';
 import { setItem } from './common/storage.js';
 import { getStartOfWeek } from './common/time.utils.js';
 import { initEventForm } from './events/createEvent.js';
-import shmoment from './common/shmoment.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // инициализация всех элементов
