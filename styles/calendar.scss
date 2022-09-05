@@ -1,13 +1,16 @@
 // стили сетки календаря и заголовка календаря с днями недели
 .calendar {
   overflow: auto;
+  width: 1200px;
+  margin: auto;
 
   &__header {
-    width: 100%;
+    width: 1180px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     position: absolute;
     background-color: white;
+    padding-left: 45px;
     z-index: 1;
   }
 

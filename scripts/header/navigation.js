@@ -32,6 +32,7 @@ const onChangeWeek = event => {
   }
   renderHeader();
   renderCurrentMonth();
+  renderWeek();
 };
 
 export const initNavigation = () => {

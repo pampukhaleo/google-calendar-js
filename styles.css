@@ -68,13 +68,16 @@
 
 .calendar {
   overflow: auto;
+  width: 1200px;
+  margin: auto;
 }
 .calendar__header {
-  width: 100%;
+  width: 1180px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   position: absolute;
   background-color: white;
+  padding-left: 45px;
   z-index: 1;
 }
 .calendar__day-label {
@@ -95,7 +98,8 @@
 }
 
 .time-slot {
-  height: 60px;
+  height: 70px;
+  padding-top: 60px;
 }
 
 .header {
@@ -118,6 +122,29 @@
 .button:hover {
   background-color: #cccccc;
   color: white;
+}
+
+.calendar__week-container {
+  display: flex;
+  flex-direction: row;
+}
+.calendar__week {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.calendar__day {
+  height: 70px;
+  width: 100%;
+  text-align: center;
+  border-right: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+}
+.calendar__day:last-child {
+  border-right: none;
 }
 
 * {
