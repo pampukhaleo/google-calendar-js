@@ -16,5 +16,3 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initEventForm();
 });
-
-console.log(shmoment('2011'));

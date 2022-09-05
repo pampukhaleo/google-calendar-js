@@ -1,0 +1,31 @@
+.header {
+  height: 50px;
+  width: 425px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 7px
+}
+
+.button {
+  width: 100px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-weight: bold;
+
+  &:hover {
+    background-color: #cccccc;
+    color: white;
+  }
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+
+  &__today-btn {
+    margin-right: 5px;
+  }
+}
