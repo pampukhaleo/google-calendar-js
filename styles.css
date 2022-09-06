@@ -137,14 +137,20 @@
   justify-content: space-around;
 }
 .calendar__day {
-  height: 70px;
   width: 100%;
-  text-align: center;
   border-right: 1px solid #cccccc;
-  border-bottom: 1px solid #cccccc;
 }
 .calendar__day:last-child {
   border-right: none;
+}
+.calendar__time-slot {
+  height: 70px;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #cccccc;
+}
+.calendar__time-slot:last-child {
+  border-bottom: none;
 }
 
 * {

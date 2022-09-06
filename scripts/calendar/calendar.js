@@ -11,7 +11,7 @@ const generateDay = () => {
   const dayHours = createNumbersArray(0, 24);
   const hours = dayHours.map(
     hour => `
-      <div class="calendar__time-slot" data-time="${hour}">1</div>
+      <div class="calendar__time-slot" data-time="${hour}"></div>
     `,
   );
   return hours.join('');
@@ -25,7 +25,9 @@ export const renderWeek = () => {
   // после того, как отрисовали всю сетку для отображаемой недели, нужно отобразить события этой недели с помощью renderEvents
   const daysArr = generateWeekRange(getItem('displayedWeekStart'));
   const week = daysArr.map(
-    day => `<div class="calendar__day" data-day="${day.getDate()}">${generateDay()}</div>`,
+    day => `
+      <div class="calendar__day" data-day="${day.getDate()}">${generateDay()}</div>
+    `,
   );
   calendarWeekElem.innerHTML = week.join('');
 };
