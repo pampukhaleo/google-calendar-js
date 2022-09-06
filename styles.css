@@ -2,6 +2,7 @@
   height: 100vh;
   overflow: hidden;
   display: flex;
+  align-items: center;
   flex-direction: column;
   position: relative;
 }
@@ -69,7 +70,7 @@
 .calendar {
   overflow: auto;
   width: 1200px;
-  margin: auto;
+  margin-bottom: 55px;
 }
 .calendar__header {
   width: 1180px;
@@ -82,7 +83,6 @@
 }
 .calendar__day-label {
   height: 100px;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -100,14 +100,15 @@
 .time-slot {
   height: 70px;
   padding-top: 60px;
+  margin-right: 5px;
 }
 
 .header {
-  height: 50px;
+  height: 200px;
   display: flex;
   align-items: center;
-  margin: 7px;
-  position: relative;
+  align-self: normal;
+  margin-left: 180px;
 }
 
 .button {

@@ -8,7 +8,7 @@ const calendarWeekElem = document.querySelector('.calendar__week');
 const generateDay = () => {
   // функция должна сгенерировать и вернуть разметку дня в виде строки
   // разметка состоит из 24 часовых временных слотов (.calendar__time-slot)
-  const dayHours = createNumbersArray(0, 24);
+  const dayHours = createNumbersArray(0, 23);
   const hours = dayHours.map(
     hour => `
       <div class="calendar__time-slot" data-time="${hour}"></div>
