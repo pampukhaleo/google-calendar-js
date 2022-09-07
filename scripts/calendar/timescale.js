@@ -7,7 +7,7 @@ export const renderTimescale = () => {
   const sideTimeElem = hoursArray.map(
     hour => `
       <div class="time-slot">
-        <span class="time-slot_time">${hour}:00</span>
+        <span class="time-slot_time" data-time="${hour}">${hour}:00</span>
       </div>
     `,
   );

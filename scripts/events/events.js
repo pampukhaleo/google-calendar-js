@@ -14,11 +14,29 @@ function removeEventsFromCalendar() {
   // ф-ция для удаления всех событий с календаря
 }
 
-const createEventElement = (event) => {
+const createEventElement = event => {
   // ф-ция создает DOM элемент события
   // событие должно позиционироваться абсолютно внутри нужной ячейки времени внутри дня
   // нужно добавить id события в дата атрибут
   // здесь для создания DOM элемента события используйте document.createElement
+  const eventElem = document.createElement('div');
+  eventElem.classList.add('event');
+  eventElem.dataset.eventId = event.id;
+  eventElem.setAttribute('style', 'height: 200px;');
+  const eventTitle = document.createElement('div');
+  eventTitle.classList.add('event__title');
+  eventTitle.textContent = `${event.title}`;
+  const eventTime = document.createElement('div');
+  const startHours = event.start.getHours();
+  const startMinutes = event.start.getMinutes();
+  const endHours = event.end.getHours();
+  const endMinutes = event.end.getMinutes();
+  eventTime.classList.add('event__time');
+  eventTime.textContent = `${startHours}:${startMinutes} - ${endHours}:${endMinutes}`;
+  eventElem.append(eventTitle);
+  eventElem.append(eventTime);
+
+  return eventElem;
 };
 
 export const renderEvents = () => {
@@ -29,6 +47,25 @@ export const renderEvents = () => {
   // и вставляем туда событие
   // каждый день и временная ячейка должно содержать дата атрибуты, по которым можно будет найти нужную временную ячейку для события
   // не забудьте удалить с календаря старые события перед добавлением новых
+  const mondayDate = getItem('displayedWeekStart');
+  const events = getItem('events');
+  // console.log(mondayDate);
+  // console.log(events);
+
+  events.map(event => {
+    const timeSlot = document.querySelectorAll('.calendar__time-slot');
+    const dayDate = document.querySelectorAll('.calendar__day-label');
+    const eventHours = event.start.getHours().toString();
+    const eventDate = event.start.getDate().toString();
+    console.log(eventHours);
+    console.log(eventDate);
+    // console.log(dayDate);
+    Array.from(dayDate).map(day => console.log('day', day));
+    Array.from(timeSlot).map(slot =>
+      slot.dataset.time === eventHours ? slot.append(createEventElement(event)) : `hi`,
+    );
+    console.log(event);
+  });
 };
 
 function onDeleteEvent() {

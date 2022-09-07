@@ -30,4 +30,5 @@ export const renderWeek = () => {
     `,
   );
   calendarWeekElem.innerHTML = week.join('');
+  renderEvents();
 };

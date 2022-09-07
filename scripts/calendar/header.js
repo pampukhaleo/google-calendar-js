@@ -12,7 +12,7 @@ export const renderHeader = () => {
   const daysArray = generateWeekRange(getItem('displayedWeekStart'));
   const days = daysArray.map(
     day => `
-    <div class="calendar__day-label day-label">
+    <div class="calendar__day-label day-label" data-day="${day.getDate()}">
       <span class="day-label__day-name">${daysOfWeek[day.getDay()]}</span>
       <span class="day-label__day-number">${day.getDate()}</span>
     </div>`,
