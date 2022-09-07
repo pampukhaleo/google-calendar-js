@@ -1,6 +1,6 @@
 import { getItem } from '../common/storage.js';
 import { generateWeekRange } from '../common/time.utils.js';
-// import { openModal } from '../common/modal.js';
+import { openModal } from '../common/modal.js';
 
 const daysOfWeek = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
@@ -23,3 +23,6 @@ export const renderHeader = () => {
 
 // при клике на кнопку "Create" открыть модальное окно с формой для создания события
 // назначьте здесь обработчик
+const createBtnElem = document.querySelector('.create-event-btn');
+
+createBtnElem.addEventListener('click', openModal);
