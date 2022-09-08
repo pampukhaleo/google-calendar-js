@@ -54,17 +54,23 @@ export const renderEvents = () => {
 
   events.map(event => {
     const timeSlot = document.querySelectorAll('.calendar__time-slot');
-    const dayDate = document.querySelectorAll('.calendar__day-label');
+
     const eventHours = event.start.getHours().toString();
+
+    const dayDate = document.querySelector('.calendar__day-label');
     const eventDate = event.start.getDate().toString();
-    console.log(eventHours);
-    console.log(eventDate);
-    // console.log(dayDate);
-    Array.from(dayDate).map(day => console.log('day', day));
+    // console.log(eventHours);
+    // console.log(eventDate);
     Array.from(timeSlot).map(slot =>
       slot.dataset.time === eventHours ? slot.append(createEventElement(event)) : `hi`,
     );
-    console.log(event);
+    console.log('daydate', dayDate);
+    // Array.from(dayDate).map(day => console.log('day', day));
+    // console.log(event);
+
+    // const slotElem = document.querySelector(
+    //   `.calendar__day[data-day="${start.getDate()}"] .calendar__time-slot[data-time="${start.getHours()}"]`,
+    // );
   });
 };
 
