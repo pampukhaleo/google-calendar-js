@@ -1,6 +1,7 @@
 import { getItem, setItem } from '../common/storage.js';
 import shmoment from '../common/shmoment.js';
 import { openPopup, closePopup } from '../common/popup.js';
+import { generateWeekRange } from '../common/time.utils.js';
 
 const weekElem = document.querySelector('.calendar__week');
 const deleteEventBtn = document.querySelector('.delete-event-btn');
@@ -49,16 +50,20 @@ export const renderEvents = () => {
   // не забудьте удалить с календаря старые события перед добавлением новых
   const mondayDate = getItem('displayedWeekStart');
   const events = getItem('events');
-  // console.log(mondayDate);
+  console.log(mondayDate);
   // console.log(events);
+  const dayDate = generateWeekRange(mondayDate).map(date => date.getDate());
 
-  events.map(event => {
-    const slotElem = document.querySelector(
-      `.calendar__day[data-day="${event.start.getDate()}"] .calendar__time-slot[data-time="${event.start.getHours()}"]`,
-    );
-    console.log('slot', slotElem);
-    slotElem.append(createEventElement(event));
-  });
+  events.filter(event =>
+    event.start.getDate() === [...dayDate] ? console.log('hi') : console.log('none'),
+  );
+  //   .map(event => {
+  //   const slotElem = document.querySelector(
+  //     `.calendar__day[data-day="${event.start.getDate()}"] .calendar__time-slot[data-time="${event.start.getHours()}"]`,
+  //   );
+  //   console.log('slot', slotElem);
+  //   slotElem.append(createEventElement(event));
+  // });
 };
 
 function onDeleteEvent() {

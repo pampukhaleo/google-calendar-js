@@ -11,8 +11,15 @@ const storage = {
       id: 0.7520027086457333, // id понадобится для работы с событиями
       title: 'Title',
       description: 'Some description',
-      start: new Date('2020-05-06T01:10:00.000Z'),
-      end: new Date('2020-06-05T04:30:00.000Z'),
+      start: new Date('2020-05-13T01:10:00.000Z'),
+      end: new Date('2020-05-13T04:30:00.000Z'),
+    },
+    {
+      id: 0.7520027086457333, // id понадобится для работы с событиями
+      title: 'Title',
+      description: 'Some description',
+      start: new Date('2020-05-15T01:10:00.000Z'),
+      end: new Date('2020-05-15T04:30:00.000Z'),
     },
   ],
   // это все данные, которые вам нужно хранить для работы приложения
