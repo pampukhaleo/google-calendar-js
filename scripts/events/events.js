@@ -2,7 +2,6 @@ import { getItem, setItem } from '../common/storage.js';
 import shmoment from '../common/shmoment.js';
 import { openPopup, closePopup } from '../common/popup.js';
 import { generateWeekRange } from '../common/time.utils.js';
-import { renderWeek } from '../calendar/calendar.js';
 
 const weekElem = document.querySelector('.calendar__week');
 const deleteEventBtn = document.querySelector('.delete-event-btn');
@@ -10,7 +9,9 @@ const deleteEventBtn = document.querySelector('.delete-event-btn');
 function handleEventClick(event) {
   // если произошел клик по событию, то нужно паказать попап с кнопкой удаления
   // установите eventIdToDelete с id события в storage
+  console.log(event.path);
   openPopup();
+  // console.log(event.target.dataset.eventId);
   setItem('eventIdToDelete', event.target.dataset.eventId);
 }
 
@@ -27,16 +28,21 @@ const createEventElement = event => {
   eventElem.classList.add('event');
   eventElem.dataset.eventId = event.id;
   eventElem.setAttribute('style', 'height: 200px;');
+
   const eventTitle = document.createElement('div');
   eventTitle.classList.add('event__title');
+  eventTitle.dataset.eventId = event.id;
   eventTitle.textContent = `${event.title}`;
+
   const eventTime = document.createElement('div');
   const startHours = event.start.getHours();
   const startMinutes = event.start.getMinutes();
   const endHours = event.end.getHours();
   const endMinutes = event.end.getMinutes();
   eventTime.classList.add('event__time');
+  eventTime.dataset.eventId = event.id;
   eventTime.textContent = `${startHours}:${startMinutes} - ${endHours}:${endMinutes}`;
+
   eventElem.append(eventTitle);
   eventElem.append(eventTime);
 
@@ -76,7 +82,7 @@ function onDeleteEvent() {
   const updatedEvents = events.filter(element => element.id !== +itemId);
   setItem('events', updatedEvents);
   closePopup();
-  renderWeek();
+  renderEvents();
   const eventsFaterDelete = getItem('events');
   console.log(eventsFaterDelete);
 }
