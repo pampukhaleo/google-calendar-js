@@ -2,16 +2,20 @@ import { getItem, setItem } from '../common/storage.js';
 import { renderEvents } from './events.js';
 import { getDateTime } from '../common/time.utils.js';
 import { closeModal } from '../common/modal.js';
+import { renderWeek } from '../calendar/calendar.js';
 
 const eventFormElem = document.querySelector('.event-form');
 const closeEventFormBtn = document.querySelector('.create-event__close-btn');
 
 function clearEventForm() {
   // ф-ция должна очистить поля формы от значений
+  eventFormElem.reset();
 }
 
 function onCloseEventForm() {
   // здесь нужно закрыть модальное окно и очистить форму
+  closeModal();
+  clearEventForm();
 }
 
 function onCreateEvent(event) {
@@ -24,8 +28,24 @@ function onCreateEvent(event) {
   // полученное событие добавляем в массив событий, что хранится в storage
   // закрываем форму
   // и запускаем перерисовку событий с помощью renderEvents
+  event.preventDefault();
+  const formData = Object.fromEntries(new FormData(eventFormElem));
+  const events = getItem('events');
+  events.push({
+    id: Math.random(),
+    title: formData.title,
+    description: formData.description,
+    start: new Date('2020-05-17T01:10:00.000Z'),
+    end: new Date('2020-05-17T04:30:00.000Z'),
+  });
+  renderWeek();
+  onCloseEventForm();
 }
 
 export function initEventForm() {
   // подпишитесь на сабмит формы и на закрытие формы
+  // onCloseEventForm();
 }
+
+closeEventFormBtn.addEventListener('click', onCloseEventForm);
+eventFormElem.addEventListener('submit', onCreateEvent);

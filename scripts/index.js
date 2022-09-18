@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderTimescale();
   setItem('displayedWeekStart', getStartOfWeek(new Date()));
   renderWeek();
-  renderEvents();
+  // renderEvents();
   renderHeader();
   initNavigation();
   initEventForm();
