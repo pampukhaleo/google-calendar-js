@@ -26,10 +26,23 @@ const createEventElement = event => {
   // событие должно позиционироваться абсолютно внутри нужной ячейки времени внутри дня
   // нужно добавить id события в дата атрибут
   // здесь для создания DOM элемента события используйте document.createElement
+  const eventElemHeight = (event.end.getTime() - event.start.getTime()) / 60 / 1000;
+  const eventElemStartMinutes = event.start.getMinutes();
+  // console.log(event.end.getTime());
   const eventElem = document.createElement('div');
   eventElem.classList.add('event');
   eventElem.dataset.eventId = event.id;
-  eventElem.setAttribute('style', 'height: 200px;');
+  eventElem.setAttribute(
+    'style',
+    `height: ${eventElemHeight}px; 
+      position: absolute; 
+      top: ${eventElemStartMinutes}px;
+      left: 5px;
+      padding: 5px;
+      background-color: gainsboro;
+      border: 2px solid grey;
+      border-radius: 15px;`,
+  );
 
   const eventTitle = document.createElement('div');
   eventTitle.classList.add('event__title');
@@ -72,6 +85,7 @@ export const renderEvents = () => {
       const slotElem = document.querySelector(
         `.calendar__day[data-day="${event.start.getDate()}"] .calendar__time-slot[data-time="${event.start.getHours()}"]`,
       );
+      slotElem.setAttribute('style', 'position: relative;');
       slotElem.append(createEventElement(event));
     });
 };

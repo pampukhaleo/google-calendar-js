@@ -25,7 +25,7 @@ const storage = {
       id: 0.7520027086457335, // id понадобится для работы с событиями
       title: 'Title',
       description: 'Some description',
-      start: new Date('2020-05-19T01:10:00.000Z'),
+      start: new Date('2020-05-19T02:10:00.000Z'),
       end: new Date('2020-05-19T04:30:00.000Z'),
     },
   ],

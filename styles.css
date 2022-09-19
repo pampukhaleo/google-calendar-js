@@ -95,12 +95,13 @@
 }
 .calendar__time-scale {
   width: 45px;
+  margin-right: 5px;
+  text-align: right;
 }
 
 .time-slot {
-  height: 70px;
-  padding-top: 60px;
-  margin-right: 5px;
+  height: 60px;
+  padding-top: 50px;
 }
 
 .header {
@@ -145,7 +146,7 @@
   border-right: none;
 }
 .calendar__time-slot {
-  height: 70px;
+  height: 60px;
   width: 100%;
   text-align: center;
   border-bottom: 1px solid #cccccc;
