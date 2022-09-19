@@ -30,13 +30,14 @@ function onCreateEvent(event) {
   // и запускаем перерисовку событий с помощью renderEvents
   event.preventDefault();
   const formData = Object.fromEntries(new FormData(eventFormElem));
+  console.log(getDateTime(formData.date, formData.startTime));
   const events = getItem('events');
   events.push({
     id: Math.random(),
     title: formData.title,
     description: formData.description,
-    start: new Date('2020-05-17T01:10:00.000Z'),
-    end: new Date('2020-05-17T04:30:00.000Z'),
+    start: new Date(getDateTime(formData.date, formData.startTime)),
+    end: new Date(getDateTime(formData.date, formData.endTime)),
   });
   renderWeek();
   onCloseEventForm();
