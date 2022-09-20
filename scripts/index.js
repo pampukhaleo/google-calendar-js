@@ -5,17 +5,15 @@ import { initNavigation } from './header/navigation.js';
 import { setItem } from './common/storage.js';
 import { getStartOfWeek } from './common/time.utils.js';
 import { initEventForm } from './events/createEvent.js';
-import { renderEvents } from './events/events.js';
-import { currentTimeLine } from './calendar/currentTimeLine.js';
+// import { currentDateStyles } from './calendar/currentDateStyles.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // инициализация всех элементов
   renderTimescale();
   setItem('displayedWeekStart', getStartOfWeek(new Date()));
   renderWeek();
-  // renderEvents();
   renderHeader();
   initNavigation();
   initEventForm();
-  currentTimeLine();
+  // currentDateStyles();
 });

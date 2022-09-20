@@ -13,23 +13,26 @@ function renderCurrentMonth() {
   displayedMonthElem.innerHTML = getDisplayedMonth(getItem('displayedWeekStart'));
 }
 
+const onDirectionChange = direction => {
+  // get current monday
+  const monday = getItem('displayedWeekStart');
+  // change weeks on button direction click
+  if (direction === 'next') {
+    setItem('displayedWeekStart', shmoment(monday).add('days', 7).result());
+  } else if (direction === 'prev') {
+    setItem('displayedWeekStart', shmoment(monday).subtract('days', 7).result());
+  } else {
+    setItem('displayedWeekStart', getStartOfWeek(new Date()));
+  }
+};
+
 const onChangeWeek = event => {
   // при переключении недели обновите displayedWeekStart в storage
   // и перерисуйте все необходимые элементы страницы (renderHeader, renderWeek, renderCurrentMonth)
-  const monday = getItem('displayedWeekStart');
-  switch (event.target.dataset.direction) {
-    case 'next':
-      setItem('displayedWeekStart', shmoment(monday).add('days', 7).result());
-      break;
-    case 'prev':
-      setItem('displayedWeekStart', shmoment(monday).subtract('days', 7).result());
-      break;
-    case 'today':
-      setItem('displayedWeekStart', getStartOfWeek(new Date()));
-      break;
-    default:
-      break;
-  }
+
+  // change week on direction click
+  onDirectionChange(event.target.dataset.direction);
+  // render calendar
   renderHeader();
   renderCurrentMonth();
   renderWeek();

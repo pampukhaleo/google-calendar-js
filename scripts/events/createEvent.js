@@ -29,9 +29,11 @@ function onCreateEvent(event) {
   // закрываем форму
   // и запускаем перерисовку событий с помощью renderEvents
   event.preventDefault();
+  // get data from form
   const formData = Object.fromEntries(new FormData(eventFormElem));
-  console.log(getDateTime(formData.date, formData.startTime));
+  // get events
   const events = getItem('events');
+  // add form data to events array
   events.push({
     id: Math.random(),
     title: formData.title,
@@ -39,7 +41,9 @@ function onCreateEvent(event) {
     start: new Date(getDateTime(formData.date, formData.startTime)),
     end: new Date(getDateTime(formData.date, formData.endTime)),
   });
+  // render events
   renderWeek();
+  // close form
   onCloseEventForm();
 }
 

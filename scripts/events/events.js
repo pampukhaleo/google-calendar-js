@@ -3,6 +3,7 @@ import shmoment from '../common/shmoment.js';
 import { openPopup, closePopup } from '../common/popup.js';
 import { generateWeekRange } from '../common/time.utils.js';
 import { renderWeek } from '../calendar/calendar.js';
+import { currentDateStyles, redLineStyles } from '../calendar/currentDateStyles.js';
 
 const weekElem = document.querySelector('.calendar__week');
 const deleteEventBtn = document.querySelector('.delete-event-btn');
@@ -10,9 +11,8 @@ const deleteEventBtn = document.querySelector('.delete-event-btn');
 function handleEventClick(event) {
   // если произошел клик по событию, то нужно паказать попап с кнопкой удаления
   // установите eventIdToDelete с id события в storage
-  // console.log(event.path);
   openPopup();
-  // console.log(event.target.dataset.eventId);
+  // set item id to delete
   setItem('eventIdToDelete', event.target.dataset.eventId);
 }
 
@@ -26,9 +26,12 @@ const createEventElement = event => {
   // событие должно позиционироваться абсолютно внутри нужной ячейки времени внутри дня
   // нужно добавить id события в дата атрибут
   // здесь для создания DOM элемента события используйте document.createElement
+
+  // get difference between event start time and end time to make proper element height
   const eventElemHeight = (event.end.getTime() - event.start.getTime()) / 60 / 1000;
+  // get event start time minutes to have px count to style top position
   const eventElemStartMinutes = event.start.getMinutes();
-  // console.log(event.end.getTime());
+  // create event element
   const eventElem = document.createElement('div');
   eventElem.classList.add('event');
   eventElem.dataset.eventId = event.id;
@@ -44,11 +47,13 @@ const createEventElement = event => {
       border-radius: 15px;`,
   );
 
+  // create event title
   const eventTitle = document.createElement('div');
   eventTitle.classList.add('event__title');
   eventTitle.dataset.eventId = event.id;
   eventTitle.textContent = `${event.title}`;
 
+  // create event time
   const eventTime = document.createElement('div');
   const startHours = event.start.getHours();
   const startMinutes = event.start.getMinutes();
@@ -58,6 +63,7 @@ const createEventElement = event => {
   eventTime.dataset.eventId = event.id;
   eventTime.textContent = `${startHours}:${startMinutes} - ${endHours}:${endMinutes}`;
 
+  // add title and time to event element
   eventElem.append(eventTitle);
   eventElem.append(eventTime);
 
@@ -73,14 +79,16 @@ export const renderEvents = () => {
   // каждый день и временная ячейка должно содержать дата атрибуты, по которым можно будет найти нужную временную ячейку для события
   // не забудьте удалить с календаря старые события перед добавлением новых
   // renderWeek();
+
+  // get monday
   const mondayDate = getItem('displayedWeekStart');
+  // get events
   const events = getItem('events');
-  // removeEventsFromCalendar();
-  // console.log(mondayDate);
-  // console.log('rendered events', events);
+  // get current week dates
   const weekArray = generateWeekRange(mondayDate).map(date => date.getDate());
+  // show events
   events
-    .filter(event => weekArray.includes(event.start.getDate()))
+    .filter(event => weekArray.includes(event.start.getDate())) // filter events to show current week events
     .map(event => {
       const slotElem = document.querySelector(
         `.calendar__day[data-day="${event.start.getDate()}"] .calendar__time-slot[data-time="${event.start.getHours()}"]`,
@@ -88,6 +96,7 @@ export const renderEvents = () => {
       slotElem.setAttribute('style', 'position: relative;');
       slotElem.append(createEventElement(event));
     });
+  redLineStyles();
 };
 
 function onDeleteEvent() {
@@ -95,14 +104,19 @@ function onDeleteEvent() {
   // удаляем из массива нужное событие и записываем в storage новый массив
   // закрыть попап
   // перерисовать события на странице в соответствии с новым списком событий в storage (renderEvents)
+
+  // get event id
   const itemId = getItem('eventIdToDelete');
+  // get events
   const events = getItem('events');
-  // console.log('events', events);
+  // get filtered array with deleted element by id
   const updatedEvents = events.filter(element => element.id !== +itemId);
+  // set new events array
   setItem('events', updatedEvents);
+  // close pop up
   closePopup();
+  // render events
   renderWeek();
-  // console.log('updated events', updatedEvents);
 }
 
 deleteEventBtn.addEventListener('click', onDeleteEvent);
