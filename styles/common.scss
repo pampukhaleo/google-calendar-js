@@ -45,8 +45,13 @@
     background: #fff;
     padding: 16px;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 5px;
   }
+}
+
+.delete-event-btn {
+  border: none;
+  background-color: white;
 }
 
 .hidden {

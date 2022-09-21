@@ -52,7 +52,12 @@
   background: #fff;
   padding: 16px;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 5px;
+}
+
+.delete-event-btn {
+  border: none;
+  background-color: white;
 }
 
 .hidden {
@@ -102,6 +107,59 @@
 .time-slot {
   height: 60px;
   padding-top: 50px;
+}
+
+.create-event {
+  display: flex;
+  flex-direction: column;
+}
+.create-event__close-btn {
+  margin-left: auto;
+  border: none;
+  background-color: white;
+  font-weight: 700;
+  cursor: pointer;
+  height: 30px;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+.create-event__close-btn:hover {
+  color: #cccccc;
+}
+
+.event-form {
+  display: flex;
+  flex-direction: column;
+}
+.event-form__field {
+  margin: 10px;
+  border-radius: 5px;
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid saddlebrown;
+}
+.event-form__submit-btn {
+  width: 100px;
+  margin-left: auto;
+  margin-right: 10px;
+  margin-top: 6px;
+  border-radius: 5px;
+  padding: 3px;
+  background-color: white;
+}
+.event-form__submit-btn:hover {
+  color: white;
+  font-weight: 700;
+  background-color: #cccccc;
+}
+
+.event {
+  padding: 5px;
+  position: absolute;
+  left: 5px;
+  background-color: lightskyblue;
+  border: none;
+  border-radius: 5px;
 }
 
 .header {

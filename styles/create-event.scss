@@ -1,1 +1,49 @@
 // стили формы события внутри модального окна
+.create-event {
+  display: flex;
+  flex-direction: column;
+
+  &__close-btn {
+    margin-left: auto;
+    border: none;
+    background-color: white;
+    font-weight: 700;
+    cursor: pointer;
+    height: 30px;
+    font-size: 25px;
+    text-transform: uppercase;
+
+    &:hover {
+      color: #cccccc;
+    }
+  }
+}
+
+.event-form {
+  display: flex;
+  flex-direction: column;
+
+  &__field {
+    margin: 10px;
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid saddlebrown;
+  }
+
+  &__submit-btn {
+    width: 100px;
+    margin-left: auto;
+    margin-right: 10px;
+    margin-top: 6px;
+    border-radius: 5px;
+    padding: 3px;
+    background-color: white;
+
+    &:hover {
+      color: white;
+      font-weight: 700;
+      background-color: #cccccc;
+    }
+  }
+}

@@ -1,1 +1,9 @@
 // стили отображаемого в календаре события
+.event {
+  padding: 5px;
+  position: absolute;
+  left: 5px;
+  background-color: lightskyblue;
+  border: none;
+  border-radius: 5px;
+}

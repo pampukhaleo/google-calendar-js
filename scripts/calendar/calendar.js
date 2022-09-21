@@ -2,7 +2,6 @@ import { getItem } from '../common/storage.js';
 import { generateWeekRange } from '../common/time.utils.js';
 import { renderEvents } from '../events/events.js';
 import { createNumbersArray } from '../common/createNumbersArray.js';
-import { currentDateStyles } from './currentDateStyles.js';
 
 const calendarWeekElem = document.querySelector('.calendar__week');
 

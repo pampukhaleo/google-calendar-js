@@ -3,7 +3,7 @@ import shmoment from '../common/shmoment.js';
 import { openPopup, closePopup } from '../common/popup.js';
 import { generateWeekRange } from '../common/time.utils.js';
 import { renderWeek } from '../calendar/calendar.js';
-import { currentDateStyles, redLineStyles } from '../calendar/currentDateStyles.js';
+import { redLineStyles } from '../calendar/currentDateStyles.js';
 
 const weekElem = document.querySelector('.calendar__week');
 const deleteEventBtn = document.querySelector('.delete-event-btn');
@@ -11,9 +11,13 @@ const deleteEventBtn = document.querySelector('.delete-event-btn');
 function handleEventClick(event) {
   // если произошел клик по событию, то нужно паказать попап с кнопкой удаления
   // установите eventIdToDelete с id события в storage
-  openPopup();
-  // set item id to delete
-  setItem('eventIdToDelete', event.target.dataset.eventId);
+  if (event.path.length > 10) {
+    // open pop up with x,y positioning
+    openPopup(event.x, event.y);
+    // set item id to delete
+    setItem('eventIdToDelete', event.target.dataset.eventId);
+  }
+  return null;
 }
 
 function removeEventsFromCalendar() {
@@ -37,14 +41,8 @@ const createEventElement = event => {
   eventElem.dataset.eventId = event.id;
   eventElem.setAttribute(
     'style',
-    `height: ${eventElemHeight}px; 
-      position: absolute; 
-      top: ${eventElemStartMinutes}px;
-      left: 5px;
-      padding: 5px;
-      background-color: gainsboro;
-      border: 2px solid grey;
-      border-radius: 15px;`,
+    `height: ${eventElemHeight}px;
+      top: ${eventElemStartMinutes}px;`,
   );
 
   // create event title
@@ -96,6 +94,7 @@ export const renderEvents = () => {
       slotElem.setAttribute('style', 'position: relative;');
       slotElem.append(createEventElement(event));
     });
+  // render red line for current time
   redLineStyles();
 };
 
