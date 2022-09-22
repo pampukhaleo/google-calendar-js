@@ -1,7 +1,12 @@
-## Calendar start code
+[Google calendar JS](https://pampukhaleo.github.io/google-calendar-js/)
 
-### To start:
+The tech stack is:
+- HTML5
+- CSS3
+- Javascript
+- Flexbox
+- Sass (Scss)
+- BEM methodology
 
-1. clone the repo
-2. install LTS [NodeJS](https://nodejs.org/en/)
-3. run `npm install` to to use eslint in the project
+Author
+Leonid Pampukha
